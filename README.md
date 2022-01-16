@@ -11,7 +11,7 @@ The ETH address can usually be easily found within the user's wallet.
 The user must also verify that they are the owner of the ETH address that they are providing!
 This is done via private key signature. We ask the user to sign the message "HappyBirthdaySocialClub" using their private key.
 
-# Querying Ethereum
+# What we use
 
 web3.js is used to query the Ethereum database and to verify signatures: https://web3js.readthedocs.io/en/v1.2.11/index.html
 
@@ -25,8 +25,7 @@ To support: MyCryptoWallet signature why is it not working?
 
 The signature is needed to login. This signature will not change for your account unless we change the message you are required to sign ("HappyBirthdaySocialClub"). You can store the signature for re-use if you would not like to go through these steps each time you login. Note that anyone who is able to find this signature will be able to use it to log in to HBSC provided they know your address or public key as well. However, someone with this signature and/or your address or public key will NOT be able to access your private key or tamper with your wallet.
 
-
-If the wallet does not pr, the user will need to know their private key and follow the steps below:
+The user will need to know their private key and follow the steps below:
 
 Install node.js
 
@@ -36,9 +35,9 @@ After you have installed node.js, install web3.js via `npm install web3`.
 
 Use `node` to start node.js. Once node.js is running, use the following commands:
 
-`var Web3 = require("web3")` -> Defines the Web3 Object from web3.js
-`var web3 = new Web3()` -> Creates a web3 object
-`web.eth.accounts.sign("HappyBirthdaySocialClub", <private_key>)` -> Signs the message with your private key. The private key should be in quotes and start with "0x".
+`var Web3 = require("web3")` -> Defines the Web3 Object from web3.js\
+`var web3 = new Web3()` -> Creates a web3 object\
+`web.eth.accounts.sign("HappyBirthdaySocialClub", <private_key>)` -> Signs the message with your private key. The private key should be in quotes, start with "0x", and have 32bytes of data\
 
 
 You should see an output similar to the following:
@@ -54,15 +53,18 @@ You should see an output similar to the following:
 }
 ```
 
+You should use the signature as the input for login.
+
 # Verifying the signature
 
 In order to verify the signature, we need the message, the signature, and the public key of the user.
 
 The message has been decided already, and the user provides the signature.
 
-We look up the user's public key from their Ethereum address via the Ethereum APIs. This requires that the user have transacted on the blockchain before. This is required anyway since we require the user to own the NFT.
-https://ethereum.stackexchange.com/questions/13778/get-public-key-of-any-ethereum-account
+We can use the recover API from web3.js to recover the user's address based on the message signature. If the addresses match, the signature and thus the address is verified.
 
-We can then use openssl to verify the signature.
+# Checking ownership of the NTF
 
-If we are able to verify the signature, and we see that this user owns the NFT, then they have successfully logged in to our site.
+We can use the web3.js APIs to query the Ethereum contract associated with HBSC. We can then check ownership of each token.
+
+For performance, we should mantain a database with the public keys of all the owners of the tokens and check against this during login. The database can be updated every time we see a transaction for this contract. See bloom filters for a performant way to do this: https://web3js.readthedocs.io/en/v1.2.6/web3-utils.html

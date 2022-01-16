@@ -61,4 +61,5 @@ async function login() {
     }
 
     // Check that the user has the HBSC NFT
+    //TODO
 }
