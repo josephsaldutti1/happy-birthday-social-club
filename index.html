@@ -17,11 +17,19 @@
 
 <h1>Happy Birthday Social Club</h1>
 
-<p id="getBalance">Get the balance from an Ethereum address</p>
-<label for="addr">Address:</label>
-<input type="text" id="addr" name="addr">
-<button onclick="getEthBalanceFromAddress()">Get balance</button>
+<p id="getBalance">To login, enter your Ethereum wallet address and sign the following message: "HappyBirthdaySocialClub"</p>
+<p>
+    <label for="userAddress">Ethereum Address:</label>
+    <input type="text" id="userAddress" name="userAddress">
+</p>
+<p>
+    <label for="signedMessage">Signed Message:</label>
+    <input type="text" id="signedMessage" name="signedMessage">
+</p>
+<p>
+    <button onclick="login()">Login</button>
+</p>
 
-<p id="balance">Balance = ?</p>
+<p id="outputText">Output = ?</p>
 
 </html>

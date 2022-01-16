@@ -1,5 +1,6 @@
 //! Global variables
 var web3;
+const hbscString = "HappyBirthdaySocialClub";
 
 //! All setup needed on page load
 window.onload = (event) => {

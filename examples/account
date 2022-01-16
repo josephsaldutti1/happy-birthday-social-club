@@ -1,0 +1,74 @@
+# Example account
+
+<ref *1> Wallet {
+  '0': {
+    address: '0xc11c592c28f9A714D7aF306783b9c4723Cd2C599',
+    privateKey: '0x092a0e647ab5456e565102e856ad6e49b2c497d4be7c8638a3ea99cf855da8dc',
+    signTransaction: [Function: signTransaction],
+    sign: [Function: sign],
+    encrypt: [Function: encrypt],
+    index: 0
+  },
+  _accounts: Accounts {
+    currentProvider: [Getter/Setter],
+    _requestManager: RequestManager {
+      provider: [HttpProvider],
+      providers: [Object],
+      subscriptions: Map(0) {}
+    },
+    givenProvider: null,
+    providers: {
+      WebsocketProvider: [Function: WebsocketProvider],
+      HttpProvider: [Function: HttpProvider],
+      IpcProvider: [Function: IpcProvider]
+    },
+    _provider: HttpProvider {
+      withCredentials: false,
+      timeout: 0,
+      headers: undefined,
+      agent: undefined,
+      connected: true,
+      host: 'https://mainnet.infura.io/v3/4be1e97edf7947f4a8ddbeb2dad6e490',
+      httpsAgent: [Agent]
+    },
+    setProvider: [Function (anonymous)],
+    setRequestManager: [Function (anonymous)],
+    _ethereumCall: {
+      getNetworkId: [Function],
+      getChainId: [Function],
+      getGasPrice: [Function],
+      getTransactionCount: [Function],
+      getBlockByNumber: [Function]
+    },
+    wallet: [Circular *1]
+  },
+  length: 1,
+  defaultKeyName: 'web3js_wallet',
+  '0xc11c592c28f9A714D7aF306783b9c4723Cd2C599': {
+    address: '0xc11c592c28f9A714D7aF306783b9c4723Cd2C599',
+    privateKey: '0x092a0e647ab5456e565102e856ad6e49b2c497d4be7c8638a3ea99cf855da8dc',
+    signTransaction: [Function: signTransaction],
+    sign: [Function: sign],
+    encrypt: [Function: encrypt],
+    index: 0
+  },
+  '0xc11c592c28f9a714d7af306783b9c4723cd2c599': {
+    address: '0xc11c592c28f9A714D7aF306783b9c4723Cd2C599',
+    privateKey: '0x092a0e647ab5456e565102e856ad6e49b2c497d4be7c8638a3ea99cf855da8dc',
+    signTransaction: [Function: signTransaction],
+    sign: [Function: sign],
+    encrypt: [Function: encrypt],
+    index: 0
+  }
+}
+
+# Signed message "HappyBirthdaySocialClub" with web3 and aobve account
+
+{
+  message: 'HappyBirthdaySocialClub',
+  messageHash: '0x97f41855158435de6a1d3a002faf42724a39c53d62141e815c1e05c03fcab785',
+  v: '0x1b',
+  r: '0x7d341a087d85ff850331e084da9dc2dc9aa9cd43ea049b173b7965ad91c9cd7a',
+  s: '0x278cab86b3cad4cec2cd1d5a8689406ae0bdffddd203c21dfccac3e32c1d7391',
+  signature: '0x7d341a087d85ff850331e084da9dc2dc9aa9cd43ea049b173b7965ad91c9cd7a278cab86b3cad4cec2cd1d5a8689406ae0bdffddd203c21dfccac3e32c1d73911b'
+}
