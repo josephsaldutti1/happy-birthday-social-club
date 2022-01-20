@@ -11,7 +11,7 @@ The ETH address can usually be easily found within the user's wallet.
 The user must also verify that they are the owner of the ETH address that they are providing!
 This is done via private key signature. We ask the user to sign the message "HappyBirthdaySocialClub" using their private key.
 
-# What we use
+# Tools
 
 web3.js is used to query the Ethereum database and to verify signatures: https://web3js.readthedocs.io/en/v1.2.11/index.html
 
@@ -37,8 +37,7 @@ Use `node` to start node.js. Once node.js is running, use the following commands
 
 `var Web3 = require("web3")` -> Defines the Web3 Object from web3.js\
 `var web3 = new Web3()` -> Creates a web3 object\
-`web.eth.accounts.sign("HappyBirthdaySocialClub", <private_key>)` -> Signs the message with your private key. The private key should be in quotes, start with "0x", and have 32bytes of data\
-
+`web.eth.accounts.sign("HappyBirthdaySocialClub", <private_key>)` -> Signs the message with your private key. The private key should be in quotes, start with "0x", and have 32bytes of data
 
 You should see an output similar to the following:
 
@@ -63,7 +62,7 @@ The message has been decided already, and the user provides the signature.
 
 We can use the recover API from web3.js to recover the user's address based on the message signature. If the addresses match, the signature and thus the address is verified.
 
-# Checking ownership of the NTF
+# Checking ownership of the NFT
 
 We can use the web3.js APIs to query the Ethereum contract associated with HBSC. We can then check ownership of each token.
 

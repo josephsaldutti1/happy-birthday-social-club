@@ -37,9 +37,9 @@ async function login() {
     // Recover address
     let recoveredAddress;
     try {
-        console.log(`0x${signedMessage.slice(2, 66)}`);
-        console.log(`0x${signedMessage.slice(66, 130)}`);
-        console.log(`0x${signedMessage.slice(130, 132)}`);
+        console.log(`r: 0x${signedMessage.slice(2, 66)}`);
+        console.log(`s: 0x${signedMessage.slice(66, 130)}`);
+        console.log(`v: 0x${signedMessage.slice(130, 132)}`);
         recoveredAddress = await web3.eth.accounts.recover({
             messageHash: messageHash,
             r: `0x${signedMessage.slice(2, 66)}`,
@@ -55,11 +55,22 @@ async function login() {
     let userAddress = document.getElementById("userAddress").value;
     if (userAddress != recoveredAddress) {
         setOutputText("Failed to authenticate. Signature is invalid");
-        return;
+        //return;
     } else {
         setOutputText("Successfully authenticated!")
     }
 
     // Check that the user has the HBSC NFT
-    //TODO
+    let generascopeContract = new web3.eth.Contract(generascopeContractAbi, generascopeContractAddress);
+
+    generascopeContract.methods.ownerOf(661).call().then(function(result) {
+        console.log(result)
+    });
+
+    generascopeContract.methods.tokenURI(661).call().then(function(result) {
+        console.log(result)
+    });
+
+    //0xdf848ea106a49f7c93ca7de217ff0ccb645ff3e3
+
 }
